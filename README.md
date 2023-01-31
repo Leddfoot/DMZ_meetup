@@ -12,10 +12,10 @@ Speed is of essence, so instead of building full search matchup capability with 
 
 # **Planned Improvements**
 As traffic builds, more features will be added. This is the current plan:
-## Add version control
-## **Prioritize Solid Testing**
-## Allow Sorting and filtering of list of displayed users that are seeking other users
-## Create Login backend so users can avoid guest user 
-## Create a filtration system that allows users to search for very specific circumstances, ie: english speaker on European servers seeking only players on Junkyard missions
-## This concept is useful for the gaming community, **not only in DMZ** so focus should be placed on **QUALITY,** scalability
- ## scalability in particular should early on consider multi language versions
+- [x] Add version control
+- [ ] **Prioritize Solid Testing**
+- [ ] Allow Sorting and filtering of list of displayed users that are seeking other users
+- [ ] Create Login backend so users can avoid guest user 
+- [ ] Create a filtration system that allows users to search for very specific circumstances, ie: english speaker on European servers seeking only players on Junkyard missions
+- [ ]This concept is useful for the gaming community, **not only in DMZ** so focus should be placed on **QUALITY,** scalability
+- [ ]scalability in particular should early on consider multi language versions
