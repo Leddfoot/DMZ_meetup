@@ -8,25 +8,10 @@ const Navigation = () => {
   const ctx = useContext(AuthContext);
   return (
     <nav className={classes.nav}>
-    <ul>
-      {ctx.isLoggedIn && (
-        <li>
-          <a href="/">choice1</a>
-        </li>
-      )}
-      {ctx.isLoggedIn && (
-        <li>
-          <a href="/">choice2</a>
-        </li>
-      )}
-      {ctx.isLoggedIn && (
-        <li>
-          <button onClick={ctx.onLogout}>Logout</button>
-        </li>
-      )}
-    </ul>
-  </nav>
+      <button onClick={ctx.onLogout}>Logout</button>
+    </nav>
   );
 };
 
 export default Navigation;
+

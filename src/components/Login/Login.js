@@ -1,85 +1,88 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect, useReducer } from "react";
 
-import Card from '../UI/Card/Card';
-import classes from './Login.module.css';
-import Button from '../UI/Button/Button';
+import Card from "../UI/Card/Card";
+import styles from "./Login.module.css";
+import Button from "../UI/Button/Button";
 
 const emailReducer = (state, action) => {
-  if (action.type === 'USER_INPUT') {
-    return {value: action.val, isValid: action.val.includes('@')}
+  if (action.type === "USER_INPUT") {
+    return { value: action.val, isValid: action.val.includes("@") };
   }
-  if (action.type === 'INPUT_BLUR') {
-    return {value: state.value, isValid: state.value.includes('@')}
+  if (action.type === "INPUT_BLUR") {
+    return { value: state.value, isValid: state.value.includes("@") };
   }
-  return {value:'', isValid: false}
-}
+  return { value: "", isValid: false };
+};
 
 const passwordReducer = (state, action) => {
-  if (action.type === 'USER_INPUT') {
-    return {value: action.val, isValid: action.val.trim().length > 6}
+  if (action.type === "USER_INPUT") {
+    return { value: action.val, isValid: action.val.trim().length > 6 };
   }
-  if (action.type === 'INPUT_BLUR') {
-    return {value: state.value, isValid: state.value.trim().length > 6}
+  if (action.type === "INPUT_BLUR") {
+    return { value: state.value, isValid: state.value.trim().length > 6 };
   }
-  return {value:'', isValid: false}
-}
-
+  return { value: "", isValid: false };
+};
 
 const Login = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
 
-  const [emailState, dispatchEmail] = useReducer(emailReducer, {value:'', isValid:false})
-  const [passwordState, dispatchPassword] = useReducer(passwordReducer, {value:'', isValid:false})
+  const [emailState, dispatchEmail] = useReducer(emailReducer, {
+    value: "",
+    isValid: false,
+  });
+  const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
+    value: "",
+    isValid: false,
+  });
   const [isGuestUser, setIsGuestUser] = useState(false);
 
-  const {isValid: passwordIsValid} = passwordState;  
-  const {isValid: emailIsValid} = emailState;
+  const { isValid: passwordIsValid } = passwordState;
+  const { isValid: emailIsValid } = emailState;
 
   useEffect(() => {
     const identifier = setTimeout(() => {
-      // console.log('Checking form validity!');
-      setFormIsValid(isGuestUser || (emailIsValid + passwordIsValid));
+      setFormIsValid(isGuestUser || emailIsValid + passwordIsValid);
     }, 500);
 
     return () => {
-      // console.log('CLEANUP');
       clearTimeout(identifier);
     };
   }, [emailIsValid, passwordIsValid]);
 
+  let whateverDynamicValueIWantToInjectHere = 'some dynamic shit';
+
   const emailChangeHandler = (event) => {
-    dispatchEmail({type:'USER_INPUT', val: event.target.value})
+    dispatchEmail({ type: "USER_INPUT", val: event.target.value });
   };
 
   const passwordChangeHandler = (event) => {
-    dispatchPassword({type:'USER_INPUT', val: event.target.value});
+    dispatchPassword({ type: "USER_INPUT", val: event.target.value });
   };
 
   const validateEmailHandler = () => {
-    dispatchEmail({type: 'INPUT_BLUR'})
+    dispatchEmail({ type: "INPUT_BLUR" });
   };
 
   const validatePasswordHandler = () => {
-    dispatchPassword({type: 'INPUT_BLUR'})
+    dispatchPassword({ type: "INPUT_BLUR" });
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-     props.onLogin(emailState.value, passwordState.value);
-
+    props.onLogin(emailState.value, passwordState.value);
   };
 
-  const loginAsGuestHandler =(event)=>{
-    setIsGuestUser(true)
-    
-  }
+  const loginAsGuestHandler = (event) => {
+    setIsGuestUser(true);
+  };
 
   return (
-    <Card className={classes.login}>
+    <Card className={styles.login}>
       <form onSubmit={submitHandler}>
         <div
-          className={`${classes.control} ${
-            emailState.isValid === false ? classes.invalid : ''
+          className={`${styles.control} ${
+            emailState.isValid === false ? styles.invalid : ""
           }`}
         >
           <label htmlFor="email">E-Mail</label>
@@ -92,8 +95,8 @@ const Login = (props) => {
           />
         </div>
         <div
-          className={`${classes.control} ${
-            passwordState.isValid === false ? classes.invalid : ''
+          className={`${styles.control} ${
+            passwordState.isValid === false ? styles.invalid : ""
           }`}
         >
           <label htmlFor="password">Password</label>
@@ -105,14 +108,21 @@ const Login = (props) => {
             onBlur={validatePasswordHandler}
           />
         </div>
-        <div className={classes.actions}>
-          <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+        <div className={styles.actions}>
+          <Button
+            type="submit"
+            className={`styles.btn ${whateverDynamicValueIWantToInjectHere}`}
+            onclick={loginAsGuestHandler}
+          >
+            Hang out as a guest
+          </Button>
+          <hr />
+          <Button type="submit" className={styles.btn} disabled={!formIsValid}>
+            Create a new account
+          </Button>
+          <Button type="submit" className={styles.btn} disabled={!formIsValid}>
             Login
           </Button>
-          <Button type="submit" className={classes.btn} onclick={loginAsGuestHandler}>
-          Hang out as a guest
-        </Button>
-  
         </div>
       </form>
     </Card>
