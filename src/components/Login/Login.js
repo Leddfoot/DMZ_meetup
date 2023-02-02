@@ -50,8 +50,6 @@ const Login = (props) => {
     };
   }, [emailIsValid, passwordIsValid]);
 
-  let whateverDynamicValueIWantToInjectHere = 'some dynamic shit';
-
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
   };
@@ -111,7 +109,7 @@ const Login = (props) => {
         <div className={styles.actions}>
           <Button
             type="submit"
-            className={`styles.btn ${whateverDynamicValueIWantToInjectHere}`}
+            className={`styles.btn btn.guest`}
             onclick={loginAsGuestHandler}
           >
             Hang out as a guest
