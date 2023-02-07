@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useContext } from "react";
+
+import AuthContext from '../store/auth-context';
 
 import Card from "../UI/Card/Card";
 import styles from "./Login.module.css";
@@ -25,6 +27,7 @@ const passwordReducer = (state, action) => {
 };
 
 const Login = (props) => {
+  const ctx = useContext(AuthContext);
   const [formIsValid, setFormIsValid] = useState(false);
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
@@ -35,14 +38,13 @@ const Login = (props) => {
     value: "",
     isValid: false,
   });
-  const [isGuestUser, setIsGuestUser] = useState(false);
 
   const { isValid: passwordIsValid } = passwordState;
   const { isValid: emailIsValid } = emailState;
 
   useEffect(() => {
     const identifier = setTimeout(() => {
-      setFormIsValid(isGuestUser || emailIsValid + passwordIsValid);
+      setFormIsValid(ctx.isGuestUser || emailIsValid + passwordIsValid);
     }, 500);
 
     return () => {
@@ -68,11 +70,11 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, passwordState.value);
+    ctx.onLogin(emailState.value, passwordState.value);
   };
 
   const loginAsGuestHandler = (event) => {
-    setIsGuestUser(true);
+    ctx.onGuestLogin();
   };
 
   return (

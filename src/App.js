@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, {useContext} from "react";
 
 
-import AuthContext from "./components/store/auth-context";
+import AuthContext from './components/store/auth-context';
+
 import PlayerSeekingProvider from './components/store/PlayerSeekingProvider';
 
 import Login from "./components/Login/Login";
@@ -9,47 +10,17 @@ import Main from "./components/Main/Main";
 import MainHeader from "./components/MainHeader/MainHeader";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const storedLogin = localStorage.getItem("isLoggedIn");
-
-    if (storedLogin === "true") {
-      setIsLoggedIn(true);
-    }
-  }, []);
-
-  const loginHandler = (email, password) => {
-    localStorage.setItem("isLoggedIn", "true");
-    setIsLoggedIn(true);
-  };
-
-  const logoutHandler = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem("isLoggedIn");
-  };
-
-  const signInGuestUser =()=>{
-    console.log('signing in guest')
-  }
+  const ctx = useContext(AuthContext);
 
   return (
-    <AuthContext.Provider
-      value={{
-        isLoggedIn: isLoggedIn,
-        onLogout: logoutHandler,
-        onGuestSignIn: signInGuestUser
-      }}        
-    >
-      <PlayerSeekingProvider>
+       <PlayerSeekingProvider>
         <MainHeader />
         <main>
-          {!isLoggedIn && <Login onLogin={loginHandler} />}
+          {!ctx.isLoggedIn && <Login onLogin={ctx.loginHandler} />}
 
-          {isLoggedIn && <Main />}
+          {ctx.isLoggedIn && <Main />}
         </main>
       </PlayerSeekingProvider>
-    </AuthContext.Provider>
   );
 }
 
