@@ -16,7 +16,7 @@ function App() {
        <PlayerSeekingProvider>
         <MainHeader />
         <main>
-          {!ctx.isLoggedIn && <Login onLogin={ctx.loginHandler} />}
+          {!ctx.isLoggedIn && <Login />}
 
           {ctx.isLoggedIn && <Main />}
         </main>

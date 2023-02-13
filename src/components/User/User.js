@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthContext from '../store/auth-context'
 
 const UserInfo = () => {
+  const ctx = useContext(AuthContext)
+  console.log('ctx: ctx.isGuestUser ggggggggggg', ctx);
 
   return (
     <>
-    <h3>{true ? <p>NotLogged? PUT Logged as GUEST OR user account info shit </p> : <p>user account info shit</p>}</h3>
+    <h3>{!ctx.isGuestUser ? <p> Not a guest Player Info here  </p> : <p>Logged in as guest</p>}</h3>
     <p>Gotta Grab isGuestUser here</p>
     </>
   )

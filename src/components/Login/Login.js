@@ -26,7 +26,17 @@ const passwordReducer = (state, action) => {
   return { value: "", isValid: false };
 };
 
-const Login = (props) => {
+const guestReducer = (state, action) => {
+  console.log('stateadsfdfdsafdsafads: ', state);
+  if(action.type === 'GUEST_BUTTON_CLICK'){
+    
+  console.log('action: ', action);
+    return {isValid: true}
+  }
+  return {isValid: false}
+};
+
+const Login = () => {
   const ctx = useContext(AuthContext);
   const [formIsValid, setFormIsValid] = useState(false);
 
@@ -38,19 +48,25 @@ const Login = (props) => {
     value: "",
     isValid: false,
   });
+  const [guestState, dispatchGuest] = useReducer(guestReducer, {
+    isValid: false,
+  });
 
   const { isValid: passwordIsValid } = passwordState;
   const { isValid: emailIsValid } = emailState;
+  const { isValid: guestIsValid } = guestState;
 
   useEffect(() => {
     const identifier = setTimeout(() => {
-      setFormIsValid(ctx.isGuestUser || emailIsValid + passwordIsValid);
+      setFormIsValid(guestIsValid || emailIsValid + passwordIsValid);
     }, 500);
 
     return () => {
       clearTimeout(identifier);
     };
-  }, [emailIsValid, passwordIsValid]);
+  }, [emailIsValid, passwordIsValid, guestIsValid]);
+
+
 
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
@@ -68,13 +84,16 @@ const Login = (props) => {
     dispatchPassword({ type: "INPUT_BLUR" });
   };
 
+  const bypassSubmit =()=>{
+    dispatchGuest({type: "GUEST_BUTTON_CLICK"})
+  }
+
+
+  
+
   const submitHandler = (event) => {
     event.preventDefault();
-    ctx.onLogin(emailState.value, passwordState.value);
-  };
-
-  const loginAsGuestHandler = (event) => {
-    ctx.onGuestLogin();
+    ctx.onLogin(guestState.isValid);
   };
 
   return (
@@ -112,7 +131,7 @@ const Login = (props) => {
           <Button
             type="submit"
             className={`styles.btn btn.guest`}
-            onclick={loginAsGuestHandler}
+            onClick={bypassSubmit}
           >
             Hang out as a guest
           </Button>
