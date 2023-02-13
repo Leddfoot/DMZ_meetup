@@ -3,7 +3,6 @@ import AuthContext from '../store/auth-context'
 
 const UserInfo = () => {
   const ctx = useContext(AuthContext)
-  console.log('ctx: ctx.isGuestUser ggggggggggg', ctx);
 
   return (
     <>

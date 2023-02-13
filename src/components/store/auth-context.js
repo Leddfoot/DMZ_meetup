@@ -7,6 +7,7 @@ const AuthContext = React.createContext({
     onGuestLogin: ()=>{console.log('Im just here for better autocompletion')},
 })
 
+
 export const AuthContextProvider = (props)=>{
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const [isGuestUser, setIsGuestUser] = useState(false);
@@ -22,7 +23,6 @@ export const AuthContextProvider = (props)=>{
 
     const loginHandler = (guest) => {
       if (guest) {
-        console.log('is a guest')
         localStorage.setItem("isLoggedAsGuest", true);
         setIsGuestUser(true);
       }
@@ -35,7 +35,6 @@ export const AuthContextProvider = (props)=>{
         setIsGuestUser(false);
         localStorage.removeItem("isLoggedIn");
         localStorage.removeItem("isLoggedAsGuest");
-        console.log('firing logout handler')
       };
     
 
