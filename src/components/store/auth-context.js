@@ -36,10 +36,6 @@ export const AuthContextProvider = (props)=>{
         localStorage.removeItem("isLoggedIn");
         localStorage.removeItem("isLoggedAsGuest");
       };
-    
-
-
-
 
     return <AuthContext.Provider value={{
         isLoggedIn,

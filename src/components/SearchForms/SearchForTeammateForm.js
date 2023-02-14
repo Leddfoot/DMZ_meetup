@@ -10,15 +10,22 @@ import LanguageSelect from './LanguageSelect';
 import styles from "./SearchForTeammateForm.module.css";
 
 const SearchForTeammateForm = () => {
-  const playerSeekingCtx = useContext(PlayerSeekingContext);
+  const ctx = useContext(PlayerSeekingContext);
 
   const serverLocationRef = useRef();
   const totalAlreadyInPartyRef = useRef();
   const partySizeRef = useRef();
+  
+  const testSubmit =(event)=>{
+    event.preventDefault();
+    const test = partySizeRef.current.value;
+    console.log('test: ', test);
+  }
+
 
   return (
     <Card>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={testSubmit}>
         <Input
           label="Total already in Party"
           ref={totalAlreadyInPartyRef}
@@ -40,9 +47,10 @@ const SearchForTeammateForm = () => {
             disabled: true,
             id:'party-size',
             type: "dropdown",
-            defaultValue: "3",
+            defaultValue: "7",
         }}/>
         <LanguageSelect />
+        <button type="submit">submittemp</button>
         
       </form>
     </Card>

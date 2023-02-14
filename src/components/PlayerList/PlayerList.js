@@ -6,8 +6,7 @@ import Card from '../UI/Card/Card';
 import styles from './PlayerList.module.css'
 
 
-export const PlayerList = (props) => {
-console.log('styles: ', styles);
+const PlayerList = () => {
 
   return (
     <Card className={styles.playerList}>
@@ -17,3 +16,5 @@ console.log('styles: ', styles);
     </Card>
   )
 }
+
+export default PlayerList;

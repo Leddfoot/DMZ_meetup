@@ -3,8 +3,8 @@ import {render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
 // import {NameContext, NameProvider, NameConsumer} from '../react-context'
 // import {PlayerSeekingContext } from './player-seeking-context';
-import PlayerSeekingProvider from './PlayerSeekingProvider';
-import SearchForTeammateForm from '../SearchForms/SearchForTeammateForm';
+// import PlayerSeekingProvider from './PlayerSeekingProvider';
+// import SearchForTeammateForm from '../SearchForms/SearchForTeammateForm';
 
 ///////////////////////////////////////////////////////
 ////////use this link to cleanup and https://dev.to/manuartero/testing-a-react-context-provider-5cfg

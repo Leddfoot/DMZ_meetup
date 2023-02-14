@@ -1,2 +1,6 @@
+FInish submission form
+Create alternate context for list of players to match with or repurpose the existing context? It is nearly identical
+Maybe USE A FIELD IN THE EXISTING CONTEXT THAT MARKS IF IT IS THE WEBSITE USER AKA THE ONE SEEKING OTHER PLAYERS
+THAT WOULD BE A REAL EASY UNDERSTANDABLE APPROACH, NO REFACTORING, NO NEARLY IDENTICAL DUPLICATE :):):):):)
 Write tests for PlayerList and PlayerListItem
 Fix test for auth context/provider
