@@ -1,9 +1,13 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
+
 
 const testManipulateContext =()=>{}
 
+///instead of 2 different contexts, just do not show the player themselves, ie don't display the player with matching id , much simpler
+
 const playerSeekingContext = [{
-    id: Math.random() + Math.random(),
+    id: nanoid(),
     gamerTag: 'FuknNOOBCamper',
     activisionId: null,
     gamerTagIncludesActivisionId: false,
@@ -14,7 +18,7 @@ const playerSeekingContext = [{
       primaryLanguage: 'Chinese',
       doTestFunction: testManipulateContext}
     },{
-      id: Math.random() + Math.random(),
+      id: nanoid(),
       gamerTag: 'Sniperwannabe',
       activisionId: null,
       gamerTagIncludesActivisionId: false,
@@ -26,7 +30,7 @@ const playerSeekingContext = [{
         doTestFunction: testManipulateContext}
       },
       {
-        id: Math.random() + Math.random(),
+        id: nanoid(),
         gamerTag: 'stoneColdKiller',
         activisionId: null,
         gamerTagIncludesActivisionId: false,
@@ -41,6 +45,7 @@ const playerSeekingContext = [{
     
 
 export const PlayerListItem = () => {
+  console.log('playerSeekingContext: ', playerSeekingContext);
   return (
     <>
     {playerSeekingContext.length === 0 ? <li>No One Searching at the moment</li> :  playerSeekingContext.map(player=>

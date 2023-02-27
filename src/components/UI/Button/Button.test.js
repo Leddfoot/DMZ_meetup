@@ -7,7 +7,7 @@ import { render, screen } from '@testing-library/react'
 
 
 describe('The button tests:', ()=>{
-    test("SAMPLE-TEST-testing that button gets rendered", () => {
+    test('SAMPLE-TEST-testing that button gets rendered', () => {
         render(<Button/>);
     
         const element = screen.getByRole('button')
@@ -15,7 +15,7 @@ describe('The button tests:', ()=>{
         expect(element).toBeInTheDocument();
     })
     
-    test("SAMPLE-TEST-testing that button is not disabled", () => {
+    test('SAMPLE-TEST-testing that button is not disabled', () => {
         render(<Button/>);
     
         const element = screen.getByRole('button')

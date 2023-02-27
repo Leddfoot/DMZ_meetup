@@ -1,12 +1,15 @@
-import React from "react";
+import React from 'react';
+import { nanoid } from 'nanoid';
 
 const testManipulateContext =()=>{console.log('temp')}
 
 const PlayerSeekingContext = React.createContext({
-    id: Math.random() + Math.random(),
+    id: nanoid(),
+    isLoggedInPlayerThisBrowser: false,
     gamerTag: 'DEFAULTFORAUTOCOMPLETE',
     activisionId: null,
     gamerTagIncludesActivisionId: false,
+    discordHandle: null,
     searchingCriteria: {
       totalInParty: 1,
       serverLocation: 'DEFAULTFORAUTOCOMPLETE',
@@ -33,28 +36,28 @@ const PlayerSeekingContext = React.createContext({
     //     const [isGuestUser, setIsGuestUser] = useState(false);
     
     //     useEffect(() => {
-    //         const storedLogin = localStorage.getItem("isLoggedIn");
-    //         const storedGuestStatus = localStorage.getItem("isLoggedAsGuest")
+    //         const storedLogin = localStorage.getItem('isLoggedIn');
+    //         const storedGuestStatus = localStorage.getItem('isLoggedAsGuest')
         
-    //         if (storedLogin === "true" || storedGuestStatus) {
+    //         if (storedLogin === 'true' || storedGuestStatus) {
     //           setIsLoggedIn(true);
     //         }
     //       }, []);
     
     //     const loginHandler = (guest) => {
     //       if (guest) {
-    //         localStorage.setItem("isLoggedAsGuest", true);
+    //         localStorage.setItem('isLoggedAsGuest', true);
     //         setIsGuestUser(true);
     //       }
-    //         localStorage.setItem("isLoggedIn", "true");
+    //         localStorage.setItem('isLoggedIn', 'true');
     //         setIsLoggedIn(true);
     //       };
         
     //       const logoutHandler = () => {
     //         setIsLoggedIn(false);
     //         setIsGuestUser(false);
-    //         localStorage.removeItem("isLoggedIn");
-    //         localStorage.removeItem("isLoggedAsGuest");
+    //         localStorage.removeItem('isLoggedIn');
+    //         localStorage.removeItem('isLoggedAsGuest');
     //       };
   
         // return <AuthContext.Provider value={{

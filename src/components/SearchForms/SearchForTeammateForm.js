@@ -1,24 +1,25 @@
 import React, { useRef, useContext } from "react";
 
 import PlayerSeekingContext from '../store/player-seeking-context';
+import LanguageSelect from './LanguageSelect';
+import MissionSelect from './MissionSelect'
 
 import Input from "../UI/Input/Input";
 import Card from "../UI/Card/Card";
-
-import LanguageSelect from './LanguageSelect';
 
 import styles from "./SearchForTeammateForm.module.css";
 
 const SearchForTeammateForm = () => {
   const ctx = useContext(PlayerSeekingContext);
+  console.log('ctx: ', ctx);
 
-  const serverLocationRef = useRef();
   const totalAlreadyInPartyRef = useRef();
-  const partySizeRef = useRef();
+  const serverLocationRef = useRef();
+  const partySizeDesiredRef = useRef();
   
   const testSubmit =(event)=>{
     event.preventDefault();
-    const test = partySizeRef.current.value;
+    const test = partySizeDesiredRef.current.value;
     console.log('test: ', test);
   }
 
@@ -29,27 +30,31 @@ const SearchForTeammateForm = () => {
         <Input
           label="Total already in Party"
           ref={totalAlreadyInPartyRef}
-          input={{ id: "players-in-party" }}
+          input={{ id: "players-already-in-party" }}
         />
+        <hr/>
         <Input
           ref={serverLocationRef}
           label="Server Location"
           input={{
-            id: "players-in-party",
+            id: "server-location",
             type: "dropDown",
             defaultValue: "Europe",
           }}
         />
+        <hr/>
         <Input 
-        label='Party Size (Currently set by devs)' 
-        ref={partySizeRef} 
+        label='Party Size Desired (Currently set by devs)' 
+        ref={partySizeDesiredRef} 
         input={{
             disabled: true,
-            id:'party-size',
+            id:'party-size-desired',
             type: "dropdown",
             defaultValue: "7",
         }}/>
-        <LanguageSelect />
+        <hr/>
+        <LanguageSelect/>
+        <MissionSelect/>
         <button type="submit">submittemp</button>
         
       </form>
@@ -58,3 +63,21 @@ const SearchForTeammateForm = () => {
 };
 
 export default SearchForTeammateForm;
+
+
+  /////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////
+  // id: Math.random() + Math.random(),
+  // isLoggedInPlayerThisBrowser: false,
+  // gamerTag: 'DEFAULTFORAUTOCOMPLETE',
+  // activisionId: null,
+  // gamerTagIncludesActivisionId: false,
+  // discordHandle: null,
+  // searchingCriteria: {
+  //   totalInParty: 1,
+  //   serverLocation: 'DEFAULTFORAUTOCOMPLETE',
+  //   partySizeDesired: 3,
+  //   primaryLanguage: 'DEFAULTFORAUTOCOMPLETE',
+  //   doTestFunction: testManipulateContext}
+  /////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////

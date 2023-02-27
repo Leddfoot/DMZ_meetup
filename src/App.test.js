@@ -23,7 +23,7 @@ it('SAMPLE-TEST-sums numbers', () => {
   });
 
 
-test("SAMPLE-TEST-Example 1 renders successfully", () => {
+test('SAMPLE-TEST-Example 1 renders successfully', () => {
     render(<App/>);
 
     // const element = screen.getByText(/Total already/i);
@@ -31,7 +31,7 @@ test("SAMPLE-TEST-Example 1 renders successfully", () => {
     // expect(element).toBeInTheDocument();
 })
 
-test("SAMPLE-TEST-testing disabled or not disable", () => {
+test('SAMPLE-TEST-testing disabled or not disable', () => {
     render(<App/>);
 
     const element = screen.getByRole('main')

@@ -1,19 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { nanoid } from 'nanoid';
+
+/////Temporary will use some plugin bs
+
+const languageList = ['English', 'Chinese', 'Farsi', 'Russian', 'Spanish', 'Portugese'];
 
 const LanguageSelect = () => {
-    const changeLanguage =()=>{
-        console.log('language preference updated')
-    }
-  return (
-    <select onChange={changeLanguage}>
-    <option value="English">English</option>
-    <option value="Chinese">Chinese</option>
-    <option value="Spanish">Spanish</option>
-    <option value="Portugese">Portugese</option>
-    <option value="Russian">Russian</option>
-    <option value="Farsi">Farsi</option>
-    </select>
-  )
-}
+  const changeLanguage = () => {
+    console.log('language preference updated');
+  };
 
-export default LanguageSelect
+  return (
+    <label htmlFor='primary-language-selector'>Select First language:
+      <select id='primary-language-selector' onChange={changeLanguage}>
+        {languageList.map(language => <option key={nanoid()} value={language}>{language}</option>)}
+      </select>
+    </label>
+  );
+};
+
+export default LanguageSelect;

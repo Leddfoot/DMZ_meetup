@@ -1,6 +1,7 @@
 .form {
     background-color: #000;
     display: flex;
+    color: white;
   }
   
   .form button {

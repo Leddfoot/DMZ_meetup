@@ -1,29 +1,29 @@
-import React, { useState, useEffect, useReducer, useContext } from "react";
+import React, { useState, useEffect, useReducer, useContext } from 'react';
 
 import AuthContext from '../store/auth-context';
 
-import Card from "../UI/Card/Card";
-import styles from "./Login.module.css";
-import Button from "../UI/Button/Button";
+import Card from '../UI/Card/Card';
+import styles from './Login.module.css';
+import Button from '../UI/Button/Button';
 
 const emailReducer = (state, action) => {
-  if (action.type === "USER_INPUT") {
-    return { value: action.val, isValid: action.val.includes("@") };
+  if (action.type === 'USER_INPUT') {
+    return { value: action.val, isValid: action.val.includes('@') };
   }
-  if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.includes("@") };
+  if (action.type === 'INPUT_BLUR') {
+    return { value: state.value, isValid: state.value.includes('@') };
   }
-  return { value: "", isValid: false };
+  return { value: '', isValid: false };
 };
 
 const passwordReducer = (state, action) => {
-  if (action.type === "USER_INPUT") {
+  if (action.type === 'USER_INPUT') {
     return { value: action.val, isValid: action.val.trim().length > 6 };
   }
-  if (action.type === "INPUT_BLUR") {
+  if (action.type === 'INPUT_BLUR') {
     return { value: state.value, isValid: state.value.trim().length > 6 };
   }
-  return { value: "", isValid: false };
+  return { value: '', isValid: false };
 };
 
 const guestReducer = (state, action) => {
@@ -41,11 +41,11 @@ const Login = () => {
   const [formIsValid, setFormIsValid] = useState(false);
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
-    value: "",
+    value: '',
     isValid: false,
   });
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
-    value: "",
+    value: '',
     isValid: false,
   });
   const [guestState, dispatchGuest] = useReducer(guestReducer, {
@@ -69,23 +69,23 @@ const Login = () => {
 
 
   const emailChangeHandler = (event) => {
-    dispatchEmail({ type: "USER_INPUT", val: event.target.value });
+    dispatchEmail({ type: 'USER_INPUT', val: event.target.value });
   };
 
   const passwordChangeHandler = (event) => {
-    dispatchPassword({ type: "USER_INPUT", val: event.target.value });
+    dispatchPassword({ type: 'USER_INPUT', val: event.target.value });
   };
 
   const validateEmailHandler = () => {
-    dispatchEmail({ type: "INPUT_BLUR" });
+    dispatchEmail({ type: 'INPUT_BLUR' });
   };
 
   const validatePasswordHandler = () => {
-    dispatchPassword({ type: "INPUT_BLUR" });
+    dispatchPassword({ type: 'INPUT_BLUR' });
   };
 
   const bypassSubmit =()=>{
-    dispatchGuest({type: "GUEST_BUTTON_CLICK"})
+    dispatchGuest({type: 'GUEST_BUTTON_CLICK'})
   }
 
 
@@ -101,13 +101,13 @@ const Login = () => {
       <form onSubmit={submitHandler}>
         <div
           className={`${styles.control} ${
-            emailState.isValid === false ? styles.invalid : ""
+            emailState.isValid === false ? styles.invalid : ''
           }`}
         >
-          <label htmlFor="email">E-Mail</label>
+          <label htmlFor='email'>E-Mail</label>
           <input
-            type="email"
-            id="email"
+            type='email'
+            id='email'
             value={emailState.value}
             onChange={emailChangeHandler}
             onBlur={validateEmailHandler}
@@ -115,13 +115,13 @@ const Login = () => {
         </div>
         <div
           className={`${styles.control} ${
-            passwordState.isValid === false ? styles.invalid : ""
+            passwordState.isValid === false ? styles.invalid : ''
           }`}
         >
-          <label htmlFor="password">Password</label>
+          <label htmlFor='password'>Password</label>
           <input
-            type="password"
-            id="password"
+            type='password'
+            id='password'
             value={passwordState.value}
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
@@ -129,17 +129,17 @@ const Login = () => {
         </div>
         <div className={styles.actions}>
           <Button
-            type="submit"
+            type='submit'
             className={`styles.btn btn.guest`}
             onClick={bypassSubmit}
           >
             Hang out as a guest
           </Button>
           <hr />
-          <Button type="submit" className={styles.btn} disabled={!formIsValid}>
+          <Button type='submit' className={styles.btn} disabled={!formIsValid}>
             Create a new account
           </Button>
-          <Button type="submit" className={styles.btn} disabled={!formIsValid}>
+          <Button type='submit' className={styles.btn} disabled={!formIsValid}>
             Login
           </Button>
         </div>
