@@ -1,10 +1,10 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 const testManipulateContext =()=>{console.log('temp')}
 
 const PlayerSeekingContext = React.createContext({
-    id: nanoid(),
+    id: Math.random(),
     isLoggedInPlayerThisBrowser: false,
     gamerTag: 'DEFAULTFORAUTOCOMPLETE',
     activisionId: null,

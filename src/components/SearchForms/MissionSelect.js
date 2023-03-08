@@ -1,5 +1,5 @@
 import React from 'react';
-import {nanoid} from 'nanoid';
+// import {nanoid} from 'nanoid';
 
 const missionList = ['Legion', 'White', 'Black Mous', 'Crown'];
 const tierList = [1,2,3,4,5];
@@ -11,7 +11,7 @@ export const MissionSelect = () => {
       Select Mission Desired:
       <select id='mission-selector' >
         {missionList.map((mission) => (
-          <option key={nanoid()} value={mission}>
+          <option key={Math.random()} value={mission}>
             {mission}
           </option>
         ))}
@@ -21,7 +21,7 @@ export const MissionSelect = () => {
     Select Tier Desired:
     <select id='tier-selector' >
       {tierList.map((tier) => (
-        <option key={nanoid()} value={tier}>
+        <option key={Math.random()} value={tier}>
           {tier}
         </option>
       ))}

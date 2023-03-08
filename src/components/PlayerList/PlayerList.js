@@ -10,6 +10,7 @@ const PlayerList = () => {
 
   return (
     <Card className={styles.playerList}>
+    <h1 data-testid='player-list-header'>Other players currently searching:</h1>
     <ul>
     <PlayerListItem />
     </ul>

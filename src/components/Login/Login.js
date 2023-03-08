@@ -98,7 +98,7 @@ const Login = () => {
 
   return (
     <Card className={styles.login}>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} data-testid='login'>
         <div
           className={`${styles.control} ${
             emailState.isValid === false ? styles.invalid : ''
@@ -127,14 +127,12 @@ const Login = () => {
             onBlur={validatePasswordHandler}
           />
         </div>
-        <div className={styles.actions}>
+        <div className={styles.actions} data-testid='wtf'>
           <Button
             type='submit'
             className={`styles.btn btn.guest`}
             onClick={bypassSubmit}
-          >
-            Hang out as a guest
-          </Button>
+          >Hang out as a guest</Button>
           <hr />
           <Button type='submit' className={styles.btn} disabled={!formIsValid}>
             Create a new account

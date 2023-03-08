@@ -1,5 +1,5 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 /////Temporary will use some plugin bs
 
@@ -13,7 +13,7 @@ const LanguageSelect = () => {
   return (
     <label htmlFor='primary-language-selector'>Select First language:
       <select id='primary-language-selector' onChange={changeLanguage}>
-        {languageList.map(language => <option key={nanoid()} value={language}>{language}</option>)}
+        {languageList.map(language => <option key={Math.random()} value={language}>{language}</option>)}
       </select>
     </label>
   );
