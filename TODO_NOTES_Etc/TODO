@@ -1,4 +1,3 @@
-Replace Nano with alternative that doesn't break jest, !!!test for module import error!!!
 Fix autocomplete.... single quotes and use semicolons always
 Tests on regular components
 Create alternate context for list of players to match with or repurpose the existing context? It is nearly identical

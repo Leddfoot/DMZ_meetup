@@ -10,8 +10,8 @@ import Card from "../UI/Card/Card";
 import styles from "./SearchForTeammateForm.module.css";
 
 const SearchForTeammateForm = () => {
-  // const ctx = useContext(PlayerSeekingContext);
-  // console.log('ctx: ', ctx);
+  const ctx = useContext(PlayerSeekingContext);
+  console.log('ctx: ', ctx);
 
   const totalAlreadyInPartyRef = useRef();
   const serverLocationRef = useRef();

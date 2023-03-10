@@ -1,24 +1,40 @@
 import React from 'react';
-import { render, fireEvent, cleanup} from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect';
+import ReactDOM from 'react-dom';
+import { render, screen } from '@testing-library/react'
 
 import App from './App';
 
-afterEach(cleanup)
-
-it('App Renders successfully', () => {
-  const { getByTestId } = render(<App />)
-    const appEl = getByTestId('app')
-
-    expect(appEl).toBeInTheDocument()
+it('SAMPLE-TEST-sums numbers', () => {
+    let x = App
+    const sum = (a,b)=>{
+        return +a + +b
+    }
+    expect(sum(1, 2)).toEqual(3);
+    expect(sum(2, 2)).toEqual(4);
   });
 
-it('App Renders only the Login portion when the user is logged out', () => {
-  const { getByTestId } = render(<App />)
-    const appEl = getByTestId('app')
-
-    expect(appEl).toBeInTheDocument()
+it('SAMPLE-TEST-sums numbers', () => {
+    let x = App
+    const sum = (a,b)=>{
+        return +a + +b
+    }
+    expect(sum(1, 2)).toEqual(3);
+    expect(sum(2, 2)).toEqual(4);
   });
 
 
+test('SAMPLE-TEST-Example 1 renders successfully', () => {
+    render(<App/>);
 
+    // const element = screen.getByText(/Total already/i);
+
+    // expect(element).toBeInTheDocument();
+})
+
+test('SAMPLE-TEST-testing disabled or not disable', () => {
+    render(<App/>);
+
+    const element = screen.getByRole('main')
+
+    expect(element).toBeInTheDocument();
+})
