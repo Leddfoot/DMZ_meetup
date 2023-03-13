@@ -1,11 +1,13 @@
 import React from 'react'
 
-const tempColorButton = () => {
+import styles from './TempColorButton.module.css'
+
+const TempColorButton = () => {
   return (
-    <>
-    <button>'change to red'</button>
-    </>
+    <div className={styles.test}>
+    <button>Change to Blue</button>
+    </div>
   )
 }
 
-export default tempColorButton
+export default TempColorButton

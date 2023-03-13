@@ -19,7 +19,6 @@ describe('login context', () => {
         }
 
         render(<AuthContextProvider><TestComponent/></AuthContextProvider> )
-        screen.debug()
 
       })
 })

@@ -3,6 +3,10 @@
     display: flex;
     color: white;
   }
+
+  h1 {
+    color: white;
+  }
   
   .form button {
     font: inherit;

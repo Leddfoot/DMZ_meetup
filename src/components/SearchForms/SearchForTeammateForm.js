@@ -11,7 +11,7 @@ import styles from "./SearchForTeammateForm.module.css";
 
 const SearchForTeammateForm = () => {
   const ctx = useContext(PlayerSeekingContext);
-  console.log('ctx: ', ctx);
+  // console.log('ctx: ', ctx);
 
   const totalAlreadyInPartyRef = useRef();
   const serverLocationRef = useRef();
@@ -20,13 +20,17 @@ const SearchForTeammateForm = () => {
   const testSubmit =(event)=>{
     event.preventDefault();
     const test = partySizeDesiredRef.current.value;
-    console.log('test: ', test);
   }
 
 
   return (
     <Card>
-      <form className={styles.form} onSubmit={testSubmit}>
+    <h1>Update ppu documentation!!!!</h1>
+    <h1>Update ppu documentation!!!!</h1>
+    <h1>Update ppu documentation!!!!</h1>
+    <h1>Update ppu documentation!!!!</h1>
+    <h1>Update ppu documentation!!!!</h1>
+    <form className={styles.form} onSubmit={testSubmit}>
         <Input
           label="Total already in Party"
           ref={totalAlreadyInPartyRef}

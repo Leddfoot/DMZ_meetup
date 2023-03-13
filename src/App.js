@@ -8,6 +8,7 @@ import Main from './components/Main/Main';
 import MainHeader from './components/MainHeader/MainHeader';
 import PlayerList from './components/PlayerList/PlayerList';
 import SearchForTeammateForm from './components/SearchForms/SearchForTeammateForm';
+import TempColorButton from './components/temp/TempColorButton';
 
 function App() {
   const ctx = useContext(AuthContext);
@@ -20,6 +21,7 @@ function App() {
 
       {ctx.isLoggedIn && <Main />}
       <SearchForTeammateForm />
+      <TempColorButton />
       <PlayerList />
     </main>
     </>
